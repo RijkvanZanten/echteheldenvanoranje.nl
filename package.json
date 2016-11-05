@@ -1,0 +1,66 @@
+{
+  "name": "verleden-verteld",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RijkvanZanten/verleden-verteld.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RijkvanZanten/verleden-verteld/issues"
+  },
+  "homepage": "https://github.com/RijkvanZanten/verleden-verteld#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "express": "^4.14.0",
+    "localforage": "^1.4.3",
+    "node-directus-client": "^0.3.0",
+    "radium": "^0.18.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-helmet": "^3.2.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^3.0.0",
+    "redux": "^3.6.0",
+    "redux-action-buffer": "^1.0.1",
+    "redux-devtools-extension": "^1.0.0",
+    "redux-persist": "^4.0.0-alpha7",
+    "redux-thunk": "^2.1.0",
+    "socket.io": "^1.5.1",
+    "socket.io-client": "^1.5.1"
+  },
+  "devDependencies": {
+    "assets-webpack-plugin": "^3.5.0",
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.0",
+    "babel-loader": "^6.2.7",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-stage-1": "^6.16.0",
+    "eslint": "^3.9.1",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-react": "^6.5.0",
+    "file-loader": "^0.9.0",
+    "image-webpack-loader": "^3.0.0",
+    "json-loader": "^0.5.4",
+    "nodemon": "^1.11.0",
+    "progress-bar-webpack-plugin": "^1.9.0",
+    "rimraf": "^2.5.4",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.3",
+    "webpack-dashboard": "^0.2.0",
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-hot-middleware": "^2.13.1",
+    "webpack-merge": "^0.15.0",
+    "webpack-node-externals": "^1.5.4"
+  }
+}
