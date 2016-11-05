@@ -1,4 +1,9 @@
 import socket from 'socket.io';
+import DirectusSDKClient from 'node-directus-client';
+
+const client = new DirectusSDKClient('kzwKSubHZKdMZ42q2hDZqSQ0PtQ9jcSQ', {
+  baseUrl: 'http://cms.verledenverteld.nl/api/'
+});
 
 const listen = function(app) {
   const io = socket.listen(app);
