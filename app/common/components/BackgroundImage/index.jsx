@@ -33,8 +33,9 @@ class BackgroundImage extends Component {
 
 const styles = {
   container: {
-    position: 'relative',
-    width: '100vw'
+    position: 'absolute',
+    width: '100vw',
+    zIndex: '-1'
   },
   img: {
     width: '100%',
