@@ -14,6 +14,7 @@ class BackgroundImage extends Component {
     return (
       <div style={styles.container}>
         <img
+          style={styles.img}
           sizes="(max-width: 1400px) 100vw, 1400px"
           srcSet={`
             ${i200} 200w,
