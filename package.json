@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:client": "webpack --config ./build_configs/client.prod.js",
+    "build:server": "webpack --config ./build_configs/server.prod.js",
+    "dev:server": "webpack --config ./build_configs/server.dev.js --watch",
+    "dev:client": "webpack-dashboard -m  -- nodemon --watch app/server --delay 2s build/server.dev.js",
+    "build": "rimraf ./build && npm run build:client && npm run build:server",
+    "postinstall": "npm run build --silent",
+    "start": "node build/server.js"
   },
   "repository": {
     "type": "git",
