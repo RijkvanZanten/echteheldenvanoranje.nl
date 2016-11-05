@@ -24,6 +24,7 @@ export default {
     margin: 0,
     backgroundColor: '#2a2e32',
     minHeight: '100vh',
+    minWidth: '652px'
   },
   'article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary': {
     display: 'block'
