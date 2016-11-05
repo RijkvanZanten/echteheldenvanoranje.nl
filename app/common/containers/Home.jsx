@@ -7,8 +7,8 @@ class Home extends Component {
   render() {
     return (
       <div style={styles.container}>
-        <BackgroundImage />
-        <HomeContent />
+        <BackgroundImage/>
+        <HomeContent/>
       </div>
     );
   }

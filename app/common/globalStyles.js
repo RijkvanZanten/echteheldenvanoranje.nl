@@ -1,7 +1,24 @@
+import Nexa from './fonts/Nexa.woff';
+import OpenSans from './fonts/OpenSans.woff';
+
 export default {
+  '@font-face': {
+    fontFamily: 'Nexa',
+    src: `url(${Nexa})`,
+    fontWeight: 'normal',
+    fontStyle: 'normal'
+  },
+  '@font-face ': {
+    fontFamily: 'Open Sans',
+    src: `url(${OpenSans})`,
+    fontWeight: 'normal',
+    fontStyle: 'normal'
+  },
   'html' : {
     msTextSizeAdjust: '100%',
     webkitTextSizeAdjust: '100%',
+    color: 'white',
+    fontFamily: 'Open Sans'
   },
   'body' : {
     margin: 0
