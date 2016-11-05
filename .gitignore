@@ -38,3 +38,5 @@ jspm_packages
 
 # Build dir
 build
+
+.DS_Store
