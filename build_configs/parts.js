@@ -28,6 +28,10 @@ exports.commonConfig = {
       {
         test: /\.woff$/,
         loaders: ['url?limit=50000&name=[name].[ext]?[hash:5]']
+      },
+      {
+        test: /\.ttf$/,
+        loaders: ['url?limit=50000&name=[name].[ext]?[hash:5]']
       }
     ]
   },

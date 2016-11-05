@@ -1,4 +1,4 @@
-import Nexa from './fonts/Nexa.woff';
+import Nexa from './fonts/Nexa.ttf';
 import OpenSans from './fonts/OpenSans.woff';
 
 export default {
