@@ -11,7 +11,8 @@ const StyleDebounceInput = Radium(DebounceInput);
 
 const mapStateToProps = function(state) {
   return {
-    totals: state.totals
+    totals: state.totals,
+    people: state.people
   };
 };
 
@@ -33,22 +34,28 @@ class Vizualisation extends Component {
   }
 
   render() {
-    const { totals } = this.props;
+    const { totals, people } = this.props;
+    const filteredPeople = [];
+    Object.keys(people.people).forEach((id) => {
+      if(people.people[id].place_of_birth.toLowerCase() === people.q.toLowerCase()) filteredPeople.push(people.people[id]);
+    });
+
     return(
       <div>
         <div style={styles.labels}>
           <StyleDebounceInput
             minLength={5}
-            debounceTimeout={500}
+            debounceTimeout={1000}
             onChange={(e) => this.getLocalData(e.target.value)}
             style={styles.input}
             type="text"
-            placeholder="voer plaats in" />
+            placeholder="voer plaats in"
+            value="amsterdam" />
 
           <span style={styles.nlLabel}>Nederland</span>
         </div>
         {Object.keys(totals.years).map((y, i) => {
-          return <TimeLineYear year={y} key={i} totalsYear={this.props.totals.years[y]}/>;
+          return <TimeLineYear year={y} key={i} totalsYear={this.props.totals.years[y]} people={filteredPeople}/>;
         }
         )}
       </div>
