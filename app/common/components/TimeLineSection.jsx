@@ -8,7 +8,7 @@ const StyleLink = Radium(Link);
 class TimeLineSection extends Component {
   render() {
     let dots = [];
-    for(let i = 0; i < this.props.totalsMonth / 1; i++) {
+    for(let i = 0; i < this.props.totalsMonth / 10; i++) {
       dots.push(<span key={i} style={[styles.dotRight, styles.dot]}></span>);
     }
     return(
