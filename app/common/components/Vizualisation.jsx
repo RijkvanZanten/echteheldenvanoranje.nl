@@ -26,6 +26,7 @@ class Vizualisation extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getTotals());
+    dispatch(getLocalIfNeeded('amsterdam'));
   }
 
   getLocalData(locationName) {
@@ -54,10 +55,7 @@ class Vizualisation extends Component {
 
           <span style={styles.nlLabel}>Nederland</span>
         </div>
-        {Object.keys(totals.years).map((y, i) => {
-          return <TimeLineYear year={y} key={i} totalsYear={this.props.totals.years[y]} people={filteredPeople}/>;
-        }
-        )}
+        <TimeLineYear year={'1941'} totalsYear={this.props.totals.years['1941']} people={filteredPeople.filter((d) => d.death_year === '1941')}/>
       </div>
     );
   }

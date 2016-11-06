@@ -22,7 +22,7 @@ const listen = function(app) {
     socket.on('action', (action) => {
       switch(action.type) {
         case 'GET_LOCAL':
-          connection.query(`SELECT * FROM persoon WHERE place_of_birth="${action.location}";`, (err, res) => {
+          connection.query(`SELECT * FROM persoon WHERE place_of_birth="${action.location}" AND death_year="1941";`, (err, res) => {
             if(err) throw err;
 
             const formattedData = {};
@@ -38,7 +38,7 @@ const listen = function(app) {
           break;
 
         case 'GET_TOTALS':
-          connection.query('SELECT death_year, death_month, COUNT(*) as count FROM persoon GROUP BY death_year, death_month;', (err, res) => {
+          connection.query('SELECT death_year, death_month, COUNT(*) as count FROM persoon WHERE death_year="1941" GROUP BY death_year, death_month;', (err, res) => {
             if(err) throw err;
 
             const totals = {

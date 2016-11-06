@@ -8,12 +8,14 @@ const StyleLink = Radium(Link);
 class TimeLineSection extends Component {
   render() {
     let dots = [];
-    for(let i = 0; i < this.props.totalsMonth / 100; i++) {
+    for(let i = 0; i < this.props.totalsMonth / 1; i++) {
       dots.push(<span key={i} style={[styles.dotRight, styles.dot]}></span>);
     }
     return(
       <li style={styles.container}>
-        <div style={styles.dotsSection}></div>
+        <div style={styles.dotsSection}>
+          {this.props.people.map((d, i) => <StyleLink key={i} to={'persoon/' + d.id}><span style={[styles.dotLeft, styles.dot]}></span></StyleLink>)}
+        </div>
         <div style={styles.labelContainer}><span style={styles.label}>— {this.props.month} —</span></div>
         <div style={styles.dotsSection}>
           {dots}
@@ -57,6 +59,9 @@ const styles = {
   },
   dotRight: {
     float: 'left',
+  },
+  dotLeft: {
+    float: 'right'
   }
 };
 

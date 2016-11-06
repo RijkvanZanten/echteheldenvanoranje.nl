@@ -14,7 +14,7 @@ class TimeLineYear extends Component {
     return (
       <ul style={styles.timeLine}>
         <li style={styles.year}>19<span style={styles.accent}>{this.props.year.substr(2)}</span></li>
-        {this.props.totalsYear.map((total, i) => <TimeLineSection key={i} month={this.months[i]} year={this.props.year} totalsMonth={this.props.totalsYear[i]}/>)}
+        {this.props.totalsYear.map((total, i) => <TimeLineSection key={i} month={this.months[i]} year={this.props.year} totalsMonth={this.props.totalsYear[i]} people={this.props.people.filter((d) => d.death_month == i + 1)}/>)}
       </ul>
     );
   }
