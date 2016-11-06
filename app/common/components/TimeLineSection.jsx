@@ -1,263 +1,24 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+
+import { getPeopleIfNeeded } from '../actions/people';
 
 const StyleLink = Radium(Link);
 
 @Radium
+@connect()
 class TimeLineSection extends Component {
-  constructor(props) {
-    super(props);
-
-    this.dummyData = [
-      {
-        id: 1,
-        type: 'Militair'
-      },
-      {
-        id: 2,
-        type: 'Verzet'
-      },
-      {
-        id: 3,
-        type: 'Verzet'
-      },
-      {
-        id: 4,
-        type: 'Sjoa'
-      },
-      {
-        id: 3,
-        type: 'Sjoa'
-      },
-      {
-        id: 1,
-        type: 'Militair'
-      },
-      {
-        id: 2,
-        type: 'Verzet'
-      },
-      {
-        id: 3,
-        type: 'Verzet'
-      },
-      {
-        id: 4,
-        type: 'Sjoa'
-      },
-      {
-        id: 3,
-        type: 'Sjoa'
-      },
-      {
-        id: 1,
-        type: 'Militair'
-      },
-      {
-        id: 2,
-        type: 'Verzet'
-      },
-      {
-        id: 3,
-        type: 'Verzet'
-      },
-      {
-        id: 4,
-        type: 'Sjoa'
-      },
-      {
-        id: 3,
-        type: 'Sjoa'
-      },
-      {
-        id: 1,
-        type: 'Militair'
-      },
-      {
-        id: 2,
-        type: 'Verzet'
-      },
-      {
-        id: 3,
-        type: 'Verzet'
-      },
-      {
-        id: 4,
-        type: 'Sjoa'
-      },
-      {
-        id: 3,
-        type: 'Sjoa'
-      },
-      {
-        id: 1,
-        type: 'Militair'
-      },
-      {
-        id: 2,
-        type: 'Verzet'
-      },
-      {
-        id: 3,
-        type: 'Verzet'
-      },
-      {
-        id: 4,
-        type: 'Sjoa'
-      },
-      {
-        id: 3,
-        type: 'Sjoa'
-      },
-      {
-        id: 1,
-        type: 'Militair'
-      },
-      {
-        id: 2,
-        type: 'Verzet'
-      },
-      {
-        id: 3,
-        type: 'Verzet'
-      },
-      {
-        id: 4,
-        type: 'Sjoa'
-      },
-      {
-        id: 3,
-        type: 'Sjoa'
-      },
-      {
-        id: 1,
-        type: 'Militair'
-      },
-      {
-        id: 2,
-        type: 'Verzet'
-      },
-      {
-        id: 3,
-        type: 'Verzet'
-      },
-      {
-        id: 4,
-        type: 'Sjoa'
-      },
-      {
-        id: 3,
-        type: 'Sjoa'
-      },
-      {
-        id: 1,
-        type: 'Militair'
-      },
-      {
-        id: 2,
-        type: 'Verzet'
-      },
-      {
-        id: 3,
-        type: 'Verzet'
-      },
-      {
-        id: 4,
-        type: 'Sjoa'
-      },
-      {
-        id: 3,
-        type: 'Sjoa'
-      },
-      {
-        id: 1,
-        type: 'Militair'
-      },
-      {
-        id: 2,
-        type: 'Verzet'
-      },
-      {
-        id: 3,
-        type: 'Verzet'
-      },
-      {
-        id: 4,
-        type: 'Sjoa'
-      },
-      {
-        id: 3,
-        type: 'Sjoa'
-      },
-      {
-        id: 1,
-        type: 'Militair'
-      },
-      {
-        id: 2,
-        type: 'Verzet'
-      },
-      {
-        id: 3,
-        type: 'Verzet'
-      },
-      {
-        id: 4,
-        type: 'Sjoa'
-      },
-      {
-        id: 3,
-        type: 'Sjoa'
-      },
-      {
-        id: 1,
-        type: 'Militair'
-      },
-      {
-        id: 2,
-        type: 'Verzet'
-      },
-      {
-        id: 3,
-        type: 'Verzet'
-      },
-      {
-        id: 4,
-        type: 'Sjoa'
-      },
-      {
-        id: 3,
-        type: 'Sjoa'
-      },
-      {
-        id: 1,
-        type: 'Militair'
-      },
-      {
-        id: 2,
-        type: 'Verzet'
-      },
-      {
-        id: 3,
-        type: 'Verzet'
-      },
-      {
-        id: 4,
-        type: 'Sjoa'
-      },
-      {
-        id: 3,
-        type: 'Sjoa'
-      },
-    ];
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(getPeopleIfNeeded(this.props.month, this.props.year));
   }
 
   render() {
     return(
       <li style={styles.container}>
         <div style={styles.dotsSection}>
-          {this.dummyData.map((d, i) => (<StyleLink key={i} to={'/persoon/' + d.id}><span style={[styles.dot, styles[d.type]]}></span></StyleLink>))}
         </div>
         <div style={styles.labelContainer}><span style={styles.label}>— {this.props.month} —</span></div>
         <div style={styles.dotsSection}></div>
@@ -265,6 +26,9 @@ class TimeLineSection extends Component {
     );
   }
 }
+
+// {this.dummyData.map((d, i) => (<StyleLink key={i} to={'/persoon/' + d.id}><span style={[styles.dot, styles[d.type]]}></span></StyleLink>))}
+
 
 const styles = {
   container: {

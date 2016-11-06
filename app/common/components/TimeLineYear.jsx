@@ -1,31 +1,16 @@
 import React, { Component } from 'react';
-import TimeLineYear from './TimeLineYear';
-import { connect } from 'react-redux';
 import Radium from 'radium';
 
-const mapStateToProps = function(state) {
-  return {
-    people: state.people
-  };
-};
+import TimeLineSection from './TimeLineSection';
 
 @Radium
-@connect(mapStateToProps)
-class Vizualisation extends Component {
-  constructor(props) {
-    super(props);
-  }
+class TimeLineYear extends Component {
   render() {
-    return(
-      <div>
-        <div style={styles.labels}>
-          <input style={styles.input} type="text" />
-          <span style={styles.nlLabel}>Nederland</span>
-        </div>
-        {Object.keys(this.props.people).map((y, i) =>
-          <TimeLineYear year={y} key={i} yearData={this.props.people[y]}/>
-        )}
-      </div>
+    return (
+      <ul style={styles.timeLine}>
+        <li style={styles.year}>19<span style={styles.accent}>{this.props.year.substr(2)}</span></li>
+        {Object.keys(this.props.yearData).map((m) => <TimeLineSection key={m} month={m} year={this.props.year}/>)}
+      </ul>
     );
   }
 }
@@ -83,4 +68,4 @@ const styles = {
   }
 };
 
-export default Vizualisation;
+export default TimeLineYear;
