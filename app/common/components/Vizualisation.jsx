@@ -35,7 +35,7 @@ class Vizualisation extends Component {
   }
 
   render() {
-    const { totals, people } = this.props;
+    const { people } = this.props;
     const filteredPeople = [];
     Object.keys(people.people).forEach((id) => {
       if(people.people[id].place_of_birth.toLowerCase() === people.q.toLowerCase()) filteredPeople.push(people.people[id]);
@@ -50,8 +50,7 @@ class Vizualisation extends Component {
             onChange={(e) => this.getLocalData(e.target.value)}
             style={styles.input}
             type="text"
-            placeholder="voer plaats in"
-            value="amsterdam" />
+            placeholder="amsterdam" />
 
           <span style={styles.nlLabel}>Nederland</span>
         </div>

@@ -14,7 +14,13 @@ class TimeLineSection extends Component {
     return(
       <li style={styles.container}>
         <div style={styles.dotsSection}>
-          {this.props.people.map((d, i) => <StyleLink key={i} to={'persoon/' + d.id}><span style={[styles.dotLeft, styles.dot]}></span></StyleLink>)}
+          {this.props.people.map((d, i) => {
+            const dotStyles = [styles.dotLeft, styles.dot];
+            if(d.categories.indexOf('Militair') !== -1) dotStyles.push(styles.greenDot);
+            if(d.categories.indexOf('Verzet') !== -1) dotStyles.push(styles.orangeDot);
+            if(d.categories.indexOf('Sjoa') !== -1) dotStyles.push(styles.blueDot);
+            return <StyleLink key={i} to={'persoon/' + d.id}><span style={dotStyles}></span></StyleLink>;
+          })}
         </div>
         <div style={styles.labelContainer}><span style={styles.label}>— {this.props.month} —</span></div>
         <div style={styles.dotsSection}>
@@ -62,6 +68,15 @@ const styles = {
   },
   dotLeft: {
     float: 'right'
+  },
+  greenDot: {
+    backgroundColor: '#8fda62'
+  },
+  orangeDot: {
+    backgroundColor: '#daab62'
+  },
+  blueDot: {
+    backgroundColor: '#6e9fe9'
   }
 };
 

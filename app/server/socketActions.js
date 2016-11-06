@@ -11,9 +11,7 @@ const connection = mysql.createConnection({
   database: 'echteheldenvanoranje'
 });
 
-connection.connect((err) => {
-  if(err) console.log(err);
-});
+connection.connect();
 
 const listen = function(app) {
   const io = socket.listen(app);
