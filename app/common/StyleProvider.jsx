@@ -4,7 +4,7 @@ import { StyleRoot, Style } from 'radium';
 import globalStyles from './globalStyles';
 
 class StyleProvider extends Component {
-  static displayName = 'MocoMuseum'
+  static displayName = 'VerledenVerteld'
 
   render() {
     const { children } = this.props;
