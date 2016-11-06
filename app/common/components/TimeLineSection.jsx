@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
 
 const StyleLink = Radium(Link);
 

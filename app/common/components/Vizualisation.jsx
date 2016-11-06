@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import TimeLineYear from './TimeLineYear';
 import Radium from 'radium';
 import { connect } from 'react-redux';
+import DebounceInput from 'react-debounce-input';
 
 import { getTotals } from '../actions/totals';
+
+const StyleDebounceInput = Radium(DebounceInput);
 
 const mapStateToProps = function(state) {
   return {
@@ -14,9 +17,17 @@ const mapStateToProps = function(state) {
 @Radium
 @connect(mapStateToProps)
 class Vizualisation extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getTotals());
+  }
+
+  getLocalData(locationName) {
+    console.log(locationName);
   }
 
   render() {
@@ -24,7 +35,14 @@ class Vizualisation extends Component {
     return(
       <div>
         <div style={styles.labels}>
-          <input style={styles.input} type="text" placeholder="voer plaats in"/>
+          <StyleDebounceInput
+            minLength={5}
+            debounceTimeout={500}
+            onChange={(e) => this.getLocalData(e.target.value)}
+            style={styles.input}
+            type="text"
+            placeholder="voer plaats in" />
+
           <span style={styles.nlLabel}>Nederland</span>
         </div>
         {Object.keys(totals.years).map((y, i) => {
