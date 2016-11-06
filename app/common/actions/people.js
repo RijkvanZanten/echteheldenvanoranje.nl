@@ -1,8 +1,9 @@
 export function getLocalIfNeeded(location) {
   return function(dispatch, getState) {
-    dispatch(setLocalSearchQuery(location));
     const state = getState();
-    if(state.people.savedLocations.indexOf(location.toLowerCase()) === -1) {
+
+    if(state.people.q !== location && location !== '') dispatch(setLocalSearchQuery(location));
+    if(state.people.savedLocations.indexOf(location.toLowerCase()) === -1 && location !== '') {
       dispatch(getLocal(location));
     }
   };
