@@ -1,29 +1,35 @@
 import React, { Component } from 'react';
 import TimeLineYear from './TimeLineYear';
-import { connect } from 'react-redux';
 import Radium from 'radium';
+import { connect } from 'react-redux';
+
+import { getTotals } from '../actions/totals';
 
 const mapStateToProps = function(state) {
   return {
-    people: state.people
+    totals: state.totals
   };
 };
 
 @Radium
 @connect(mapStateToProps)
 class Vizualisation extends Component {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(getTotals());
   }
+
   render() {
+    const { totals } = this.props;
     return(
       <div>
         <div style={styles.labels}>
-          <input style={styles.input} type="text" />
+          <input style={styles.input} type="text" placeholder="voer plaats in"/>
           <span style={styles.nlLabel}>Nederland</span>
         </div>
-        {Object.keys(this.props.people).map((y, i) =>
-          <TimeLineYear year={y} key={i} yearData={this.props.people[y]}/>
+        {Object.keys(totals.years).map((y, i) => {
+          return <TimeLineYear year={y} key={i} totalsYear={this.props.totals.years[y]}/>;
+        }
         )}
       </div>
     );

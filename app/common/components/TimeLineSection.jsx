@@ -3,32 +3,26 @@ import Radium from 'radium';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-import { getPeopleIfNeeded } from '../actions/people';
-
 const StyleLink = Radium(Link);
 
 @Radium
-@connect()
 class TimeLineSection extends Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(getPeopleIfNeeded(this.props.month, this.props.year));
-  }
-
   render() {
+    let dots = [];
+    for(let i = 0; i < this.props.totalsMonth / 100; i++) {
+      dots.push(<span key={i} style={[styles.dotRight, styles.dot]}></span>);
+    }
     return(
       <li style={styles.container}>
-        <div style={styles.dotsSection}>
-        </div>
-        <div style={styles.labelContainer}><span style={styles.label}>— {this.props.month} —</span></div>
         <div style={styles.dotsSection}></div>
+        <div style={styles.labelContainer}><span style={styles.label}>— {this.props.month} —</span></div>
+        <div style={styles.dotsSection}>
+          {dots}
+        </div>
       </li>
     );
   }
 }
-
-// {this.dummyData.map((d, i) => (<StyleLink key={i} to={'/persoon/' + d.id}><span style={[styles.dot, styles[d.type]]}></span></StyleLink>))}
-
 
 const styles = {
   container: {
@@ -61,19 +55,9 @@ const styles = {
     borderRadius: '50%',
     backgroundColor: 'rgba(255, 255, 255, .8)',
     margin: '5px',
-    float: 'right',
-    ':hover': {
-      boxShadow: '0 0 4px 2px rgba(255, 255, 255, .8)'
-    }
   },
-  Militair: {
-    backgroundColor: '#8fda62'
-  },
-  Verzet: {
-    backgroundColor: '#daab62'
-  },
-  Sjoa: {
-    backgroundColor: 'blue'
+  dotRight: {
+    float: 'left',
   }
 };
 

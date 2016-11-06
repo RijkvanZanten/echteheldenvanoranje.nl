@@ -5,11 +5,16 @@ import TimeLineSection from './TimeLineSection';
 
 @Radium
 class TimeLineYear extends Component {
+  constructor(props) {
+    super(props);
+    this.months = ['jan', 'feb', 'maa', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
+  }
+
   render() {
     return (
       <ul style={styles.timeLine}>
         <li style={styles.year}>19<span style={styles.accent}>{this.props.year.substr(2)}</span></li>
-        {Object.keys(this.props.yearData).map((m) => <TimeLineSection key={m} month={m} year={this.props.year}/>)}
+        {this.props.totalsYear.map((total, i) => <TimeLineSection key={i} month={this.months[i]} year={this.props.year} totalsMonth={this.props.totalsYear[i]}/>)}
       </ul>
     );
   }
