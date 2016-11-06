@@ -2,6 +2,7 @@ import socket from 'socket.io';
 import mysql from 'mysql';
 
 import { setTotals } from '../common/actions/totals';
+import { setLocal } from '../common/actions/people';
 
 const connection = mysql.createConnection({
   host: '37.139.22.73',
@@ -20,6 +21,22 @@ const listen = function(app) {
   io.on('connection', (socket) => {
     socket.on('action', (action) => {
       switch(action.type) {
+        case 'GET_LOCAL':
+          connection.query(`SELECT * FROM persoon WHERE place_of_birth="${action.location}" OR place_of_death="${action.location}";`, (err, res) => {
+            if(err) throw err;
+
+            const formattedData = {};
+            res.forEach((d) => {
+              formattedData[d.id] = {
+                ...d,
+                categories: d.categories.split(',')
+              };
+            });
+
+            socket.emit('action', setLocal(formattedData, action.location));
+          });
+          break;
+
         case 'GET_TOTALS':
           connection.query('SELECT death_year, death_month, COUNT(*) as count FROM persoon GROUP BY death_year, death_month;', (err, res) => {
             if(err) throw err;

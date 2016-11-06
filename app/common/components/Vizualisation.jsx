@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import DebounceInput from 'react-debounce-input';
 
 import { getTotals } from '../actions/totals';
+import { getLocalIfNeeded } from '../actions/people';
 
 const StyleDebounceInput = Radium(DebounceInput);
 
@@ -27,7 +28,8 @@ class Vizualisation extends Component {
   }
 
   getLocalData(locationName) {
-    console.log(locationName);
+    const { dispatch } = this.props;
+    dispatch(getLocalIfNeeded(locationName));
   }
 
   render() {
