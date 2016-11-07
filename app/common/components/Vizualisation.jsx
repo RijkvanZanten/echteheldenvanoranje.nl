@@ -6,6 +6,7 @@ import DebounceInput from 'react-debounce-input';
 
 import { getTotals } from '../actions/totals';
 import { getLocalIfNeeded } from '../actions/people';
+import { getEventsIfNeeded } from '../actions/events';
 
 const StyleDebounceInput = Radium(DebounceInput);
 
@@ -27,6 +28,7 @@ class Vizualisation extends Component {
     const { dispatch } = this.props;
     dispatch(getTotals());
     dispatch(getLocalIfNeeded('amsterdam'));
+    dispatch(getEventsIfNeeded());
   }
 
   getLocalData(locationName) {

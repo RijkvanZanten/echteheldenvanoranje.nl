@@ -1,8 +1,14 @@
 import socket from 'socket.io';
 import mysql from 'mysql';
+import DirectusSDKClient from 'node-directus-client';
 
 import { setTotals } from '../common/actions/totals';
 import { setLocal } from '../common/actions/people';
+import { setEvents } from '../common/actions/events';
+
+const client = new DirectusSDKClient('kzwKSubHZKdMZ42q2hDZqSQ0PtQ9jcSQ', {
+  baseUrl: 'http://cms.verledenverteld.nl/api/'
+});
 
 const connection = mysql.createConnection({
   host: '37.139.22.73',
@@ -54,6 +60,14 @@ const listen = function(app) {
 
             socket.emit('action', setTotals(totals));
           });
+          break;
+
+        case 'GET_EVENTS':
+          client.getEntries('Gebeurtenis', (err, res) => {
+            if(err) throw err;
+            socket.emit('action', setEvents(res.rows));
+          });
+          break;
       }
     });
   });
