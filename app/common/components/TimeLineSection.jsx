@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { Link } from 'react-router';
 
+import Event from './Event.jsx';
 const StyleLink = Radium(Link);
 
 @Radium
@@ -13,6 +14,7 @@ class TimeLineSection extends Component {
     }
     return(
       <li style={styles.container}>
+        <div style={styles.event}></div>
         <div style={styles.dotsSection}>
           {this.props.people.map((d, i) => {
             const dotStyles = [styles.dotLeft, styles.dot];
@@ -23,8 +25,9 @@ class TimeLineSection extends Component {
           })}
         </div>
         <div style={styles.labelContainer}><span>— {this.props.month} —</span></div>
-        <div style={styles.dotsSection}>
-          {dots}
+        <div style={styles.dotsSection}>{dots}</div>
+        <div style={styles.event}>
+          {this.props.eventsMonth.map((d, i) => <Event key={i} data={d} />)}
         </div>
       </li>
     );
@@ -39,12 +42,13 @@ const styles = {
     alignContent: 'flex-start'
   },
   dotsSection: {
-    flexBasis: 'calc(30% - 1em)',
+    flexBasis: 'calc(15% - 1em)',
     backgroundColor: '#363d41',
-    padding: '1em'
+    padding: '1em',
+    flexShrink: 0
   },
   labelContainer: {
-    flexGrow: 1,
+    flexBasis: '10%',
     textAlign: 'center',
     color: '#9b9e9f',
     fontFamily: 'Nexa',
@@ -73,6 +77,11 @@ const styles = {
   },
   blueDot: {
     backgroundColor: '#6e9fe9'
+  },
+  event: {
+    flexBasis: '20%',
+    flexShrink: 0,
+    flexGrow: 1
   }
 };
 

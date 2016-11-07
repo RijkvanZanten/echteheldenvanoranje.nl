@@ -13,7 +13,8 @@ const StyleDebounceInput = Radium(DebounceInput);
 const mapStateToProps = function(state) {
   return {
     totals: state.totals,
-    people: state.people
+    people: state.people,
+    events: state.events
   };
 };
 
@@ -56,30 +57,13 @@ class Vizualisation extends Component {
 
           <span style={styles.nlLabel}>Nederland</span>
         </div>
-        <TimeLineYear year={'1941'} totalsYear={this.props.totals.years['1941']} people={filteredPeople.filter((d) => d.death_year === '1941')}/>
+        <TimeLineYear year={'1941'} eventsYear={this.props.events.items.filter((d) => new Date(d.Datum).getFullYear() === 1941)} totalsYear={this.props.totals.years['1941']} people={filteredPeople.filter((d) => d.death_year === '1941')}/>
       </div>
     );
   }
 }
 
 const styles = {
-  timeLine: {
-    width: '40em',
-    display: 'block',
-    margin: 'auto',
-    listStyle: 'none',
-    textAlign: 'center',
-    position: 'relative',
-    padding: 0
-  },
-  year: {
-    fontFamily: 'Nexa',
-    fontSize: '5em',
-    lineHeight: '80%',
-    position: 'absolute',
-    right: '35%',
-    opacity: '.3'
-  },
   accent: {
     display: 'block',
     color: '#ddac61'

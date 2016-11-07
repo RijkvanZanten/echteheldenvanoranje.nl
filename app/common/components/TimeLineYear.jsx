@@ -14,7 +14,14 @@ class TimeLineYear extends Component {
     return (
       <ul style={styles.timeLine}>
         <li style={styles.yearPos}><div style={styles.year}>19<span style={styles.accent}>{this.props.year.substr(2)}</span></div></li>
-        {this.props.totalsYear.map((total, i) => <TimeLineSection key={i} month={this.months[i]} year={this.props.year} totalsMonth={this.props.totalsYear[i]} people={this.props.people.filter((d) => d.death_month == i + 1)}/>)}
+        {this.props.totalsYear.map((total, i) =>
+          <TimeLineSection
+            key={i}
+            month={this.months[i]}
+            year={this.props.year}
+            totalsMonth={this.props.totalsYear[i]}
+            people={this.props.people.filter((d) => d.death_month == i + 1)}
+            eventsMonth={this.props.eventsYear.filter((d) => new Date(d.Datum).getMonth() === i)} />)}
       </ul>
     );
   }
@@ -22,7 +29,7 @@ class TimeLineYear extends Component {
 
 const styles = {
   timeLine: {
-    width: '40em',
+    width: '100%',
     display: 'block',
     margin: 'auto',
     listStyle: 'none',
@@ -32,7 +39,7 @@ const styles = {
   },
   yearPos: {
     position: 'absolute',
-    right: '35%',
+    right: '43.5%',
     height: '100%'
   },
   year: {

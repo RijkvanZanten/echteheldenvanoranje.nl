@@ -65,7 +65,13 @@ const listen = function(app) {
         case 'GET_EVENTS':
           client.getEntries('Gebeurtenis', (err, res) => {
             if(err) throw err;
-            socket.emit('action', setEvents(res.rows));
+            socket.emit('action', setEvents(res.rows.map((d) => {
+              const dateArray = (d.Datum).match(/^(\d+)-(\d+)-(\d+) (\d+)\:(\d+)\:(\d+)$/);
+              return {
+                ...d,
+                Datum: new Date(dateArray[1], dateArray[2] - 1, dateArray[3], dateArray[4], dateArray[5], dateArray[6])
+              };
+            })));
           });
           break;
       }
