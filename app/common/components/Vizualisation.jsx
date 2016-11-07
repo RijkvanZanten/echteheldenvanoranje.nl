@@ -86,7 +86,7 @@ const styles = {
     border: 'none',
     textAlign: 'right',
     position: 'relative',
-    right: '3.45em',
+    right: '2.5em',
     backgroundColor: 'transparent',
     textShadow: '1px 1px 15px #2a2e32',
     ':focus': {
@@ -95,7 +95,7 @@ const styles = {
   },
   nlLabel: {
     position: 'relative',
-    left: '3.4em',
+    left: '2.45em',
   }
 };
 
