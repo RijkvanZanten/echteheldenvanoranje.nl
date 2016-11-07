@@ -14,6 +14,9 @@ export default {
     fontWeight: 'normal',
     fontStyle: 'normal'
   },
+  '*': {
+    boxSizing: 'border-box'
+  },
   'html' : {
     msTextSizeAdjust: '100%',
     webkitTextSizeAdjust: '100%',

@@ -79,7 +79,7 @@ const styles = {
     backgroundColor: '#6e9fe9'
   },
   event: {
-    flexBasis: '20%',
+    flexBasis: '10%',
     flexShrink: 0,
     flexGrow: 1
   }
