@@ -22,7 +22,7 @@ class TimeLineSection extends Component {
             return <StyleLink key={i} to={'persoon/' + d.id}><span style={dotStyles}></span></StyleLink>;
           })}
         </div>
-        <div style={styles.labelContainer}><span style={styles.label}>— {this.props.month} —</span></div>
+        <div style={styles.labelContainer}><span>— {this.props.month} —</span></div>
         <div style={styles.dotsSection}>
           {dots}
         </div>
@@ -50,10 +50,6 @@ const styles = {
     fontFamily: 'Nexa',
     textTransform: 'uppercase',
     padding: '1em'
-  },
-  label: {
-    position: 'sticky',
-    top: '20vh'
   },
   dot: {
     display: 'inline-block',

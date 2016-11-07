@@ -13,7 +13,7 @@ class TimeLineYear extends Component {
   render() {
     return (
       <ul style={styles.timeLine}>
-        <li style={styles.year}>19<span style={styles.accent}>{this.props.year.substr(2)}</span></li>
+        <li style={styles.yearPos}><div style={styles.year}>19<span style={styles.accent}>{this.props.year.substr(2)}</span></div></li>
         {this.props.totalsYear.map((total, i) => <TimeLineSection key={i} month={this.months[i]} year={this.props.year} totalsMonth={this.props.totalsYear[i]} people={this.props.people.filter((d) => d.death_month == i + 1)}/>)}
       </ul>
     );
@@ -30,13 +30,18 @@ const styles = {
     position: 'relative',
     padding: 0
   },
+  yearPos: {
+    position: 'absolute',
+    right: '35%',
+    height: '100%'
+  },
   year: {
     fontFamily: 'Nexa',
     fontSize: '5em',
     lineHeight: '80%',
-    position: 'absolute',
-    right: '35%',
-    opacity: '.3'
+    opacity: '.3',
+    position: 'sticky',
+    top: '20px'
   },
   accent: {
     display: 'block',
