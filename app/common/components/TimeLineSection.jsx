@@ -12,15 +12,41 @@ class TimeLineSection extends Component {
     for(let i = 0; i < this.props.totalsMonth / 10; i++) {
       dots.push(<span key={i} style={[styles.dotRight, styles.dot]}></span>);
     }
+
+    const people = this.props.people.map((d) => {
+      let mainCategory;
+      let order;
+
+      if(d.categories.indexOf('Militair') !== -1) {
+        mainCategory = 'Militair';
+        order = 1;
+      } else if(d.categories.indexOf('Verzet') !== -1) {
+        mainCategory = 'Verzet';
+        order = 2;
+      } else if(d.categories.indexOf('Sjoa') !== -1) {
+        mainCategory = 'Sjoa';
+        order = 3;
+      } else {
+        mainCategory = '';
+        order = 4;
+      }
+
+      return {
+        ...d,
+        mainCategory,
+        order
+      };
+    }).sort((a, b) => (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0));
+
     return(
       <li style={styles.container}>
         <div style={styles.event}></div>
         <div style={styles.dotsSection}>
-          {this.props.people.map((d, i) => {
+          {people.map((d, i) => {
             const dotStyles = [styles.dotLeft, styles.dot];
-            if(d.categories.indexOf('Militair') !== -1) dotStyles.push(styles.greenDot);
-            if(d.categories.indexOf('Verzet') !== -1) dotStyles.push(styles.orangeDot);
-            if(d.categories.indexOf('Sjoa') !== -1) dotStyles.push(styles.blueDot);
+            if(d.mainCategory === 'Militair') dotStyles.push(styles.greenDot);
+            if(d.mainCategory === 'Verzet') dotStyles.push(styles.orangeDot);
+            if(d.mainCategory === 'Sjoa') dotStyles.push(styles.blueDot);
             return <StyleLink key={i} to={'persoon/' + d.id}><span style={dotStyles}></span></StyleLink>;
           })}
         </div>
