@@ -4,7 +4,6 @@ import Radium from 'radium';
 import { connect } from 'react-redux';
 import DebounceInput from 'react-debounce-input';
 
-import { getTotals } from '../actions/totals';
 import { getLocalIfNeeded } from '../actions/people';
 import { getEventsIfNeeded } from '../actions/events';
 
@@ -28,8 +27,8 @@ class Vizualisation extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getEventsIfNeeded());
-    dispatch(getLocalIfNeeded('amsterdam', 'left'));
-    dispatch(getLocalIfNeeded('rotterdam', 'right'));
+    dispatch(getLocalIfNeeded(this.props.people.qleft, 'left'));
+    dispatch(getLocalIfNeeded(this.props.people.qright, 'right'));
   }
 
   getLocalData(locationName, timeline) {
@@ -58,7 +57,7 @@ class Vizualisation extends Component {
             onChange={(e) => this.getLocalData(e.target.value, 'left')}
             style={[styles.input, styles.inputLeft]}
             type="text"
-            placeholder="amsterdam" />
+            placeholder={this.props.people.qleft} />
 
           <StyleDebounceInput
             minLength={5}
@@ -66,7 +65,7 @@ class Vizualisation extends Component {
             onChange={(e) => this.getLocalData(e.target.value, 'right')}
             style={[styles.input, styles.inputRight]}
             type="text"
-            placeholder="rotterdam" />
+            placeholder={this.props.people.qright} />
         </div>
         <TimeLineYear
           year={'1941'}

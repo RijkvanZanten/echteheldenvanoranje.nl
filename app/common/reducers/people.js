@@ -1,7 +1,7 @@
 const defaultState = {
   savedLocations: [],
-  qleft: '',
-  qright: '',
+  qleft: 'amsterdam',
+  qright: 'rotterdam',
   people: {}
 };
 
