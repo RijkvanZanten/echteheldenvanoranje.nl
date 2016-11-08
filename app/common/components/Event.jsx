@@ -20,7 +20,12 @@ const styles = {
     textAlign: 'left',
     padding: '0 3em 0 1em',
     marginBottom: '6.5em',
-    position: 'relative'
+    position: 'relative',
+    opacity: '.4',
+    transition: 'opacity .3s',
+    ':hover': {
+      opacity: '1'
+    }
   },
   title: {
     fontFamily: 'Nexa',

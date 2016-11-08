@@ -27,7 +27,7 @@ class Vizualisation extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    // dispatch(getTotals());
+    dispatch(getEventsIfNeeded());
     dispatch(getLocalIfNeeded('amsterdam', 'left'));
     dispatch(getLocalIfNeeded('rotterdam', 'right'));
   }
