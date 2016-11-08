@@ -27,21 +27,26 @@ class Vizualisation extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(getTotals());
-    dispatch(getLocalIfNeeded('amsterdam'));
-    dispatch(getEventsIfNeeded());
+    // dispatch(getTotals());
+    dispatch(getLocalIfNeeded('amsterdam', 'left'));
+    dispatch(getLocalIfNeeded('rotterdam', 'right'));
   }
 
-  getLocalData(locationName) {
+  getLocalData(locationName, timeline) {
     const { dispatch } = this.props;
-    dispatch(getLocalIfNeeded(locationName));
+    dispatch(getLocalIfNeeded(locationName, timeline));
   }
 
   render() {
     const { people } = this.props;
     const filteredPeople = [];
     Object.keys(people.people).forEach((id) => {
-      if(people.people[id].place_of_birth.toLowerCase() === people.q.toLowerCase()) filteredPeople.push(people.people[id]);
+      if(
+        people.people[id].place_of_birth.toLowerCase() === people.qleft.toLowerCase()
+        || people.people[id].place_of_birth.toLowerCase() === people.qright.toLowerCase()
+        || people.people[id].place_of_death.toLowerCase() === people.qleft.toLowerCase()
+        || people.people[id].place_of_death.toLowerCase() === people.qright.toLowerCase()
+      ) filteredPeople.push(people.people[id]);
     });
 
     return(
@@ -50,14 +55,25 @@ class Vizualisation extends Component {
           <StyleDebounceInput
             minLength={5}
             debounceTimeout={1000}
-            onChange={(e) => this.getLocalData(e.target.value)}
-            style={styles.input}
+            onChange={(e) => this.getLocalData(e.target.value, 'left')}
+            style={[styles.input, styles.inputLeft]}
             type="text"
             placeholder="amsterdam" />
 
-          <span style={styles.nlLabel}>Nederland</span>
+          <StyleDebounceInput
+            minLength={5}
+            debounceTimeout={1000}
+            onChange={(e) => this.getLocalData(e.target.value, 'right')}
+            style={[styles.input, styles.inputRight]}
+            type="text"
+            placeholder="rotterdam" />
         </div>
-        <TimeLineYear year={'1941'} eventsYear={this.props.events.items.filter((d) => new Date(d.Datum).getFullYear() === 1941)} totalsYear={this.props.totals.years['1941']} people={filteredPeople.filter((d) => d.death_year === '1941')}/>
+        <TimeLineYear
+          year={'1941'}
+          eventsYear={this.props.events.items.filter((d) => new Date(d.Datum).getFullYear() === 1941)}
+          people={filteredPeople.filter((d) => d.death_year === '1941')}
+          qleft={this.props.people.qleft}
+          qright={this.props.people.qright}/>
       </div>
     );
   }
@@ -84,18 +100,20 @@ const styles = {
     textTransform: 'uppercase',
     width: '50%',
     border: 'none',
-    textAlign: 'right',
     position: 'relative',
-    right: '2.5em',
     backgroundColor: 'transparent',
     textShadow: '1px 1px 15px #2a2e32',
     ':focus': {
       outline: 0
     }
   },
-  nlLabel: {
-    position: 'relative',
+  inputLeft: {
+    right: '2.5em',
+    textAlign: 'right',
+  },
+  inputRight: {
     left: '2.45em',
+    textAlign: 'left'
   }
 };
 

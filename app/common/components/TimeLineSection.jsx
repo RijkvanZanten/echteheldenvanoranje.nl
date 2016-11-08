@@ -8,11 +8,6 @@ const StyleLink = Radium(Link);
 @Radium
 class TimeLineSection extends Component {
   render() {
-    let dots = [];
-    for(let i = 0; i < this.props.totalsMonth / 10; i++) {
-      dots.push(<span key={i} style={[styles.dotRight, styles.dot]}></span>);
-    }
-
     const people = this.props.people.map((d) => {
       let mainCategory;
       let order;
@@ -38,11 +33,14 @@ class TimeLineSection extends Component {
       };
     }).sort((a, b) => (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0));
 
+    const peopleLeft = people.filter((d) => d.place_of_birth.toLowerCase() === this.props.qleft || d.place_of_death.toLowerCase() === this.props.qleft);
+    const peopleRight = people.filter((d) => d.place_of_birth.toLowerCase() === this.props.qright || d.place_of_death.toLowerCase() === this.props.qright);
+
     return(
       <li style={styles.container}>
         <div style={styles.event}></div>
         <div style={styles.dotsSection}>
-          {people.map((d, i) => {
+          {peopleLeft.map((d, i) => {
             const dotStyles = [styles.dotLeft, styles.dot];
             if(d.mainCategory === 'Militair') dotStyles.push(styles.greenDot);
             if(d.mainCategory === 'Verzet') dotStyles.push(styles.orangeDot);
@@ -51,7 +49,15 @@ class TimeLineSection extends Component {
           })}
         </div>
         <div style={styles.labelContainer}><span>— {this.props.month} —</span></div>
-        <div style={styles.dotsSection}>{dots}</div>
+        <div style={styles.dotsSection}>
+          {peopleRight.map((d, i) => {
+            const dotStyles = [styles.dotRight, styles.dot];
+            if(d.mainCategory === 'Militair') dotStyles.push(styles.greenDot);
+            if(d.mainCategory === 'Verzet') dotStyles.push(styles.orangeDot);
+            if(d.mainCategory === 'Sjoa') dotStyles.push(styles.blueDot);
+            return <StyleLink key={i} to={'persoon/' + d.id}><span style={dotStyles}></span></StyleLink>;
+          })}
+        </div>
         <div style={styles.event}>
           {this.props.eventsMonth.map((d, i) => <Event key={i} data={d} />)}
         </div>

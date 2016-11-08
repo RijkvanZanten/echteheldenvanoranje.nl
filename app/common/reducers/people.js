@@ -1,6 +1,7 @@
 const defaultState = {
   savedLocations: [],
-  q: '',
+  qleft: '',
+  qright: '',
   people: {}
 };
 
@@ -10,7 +11,7 @@ const totals = function(state = defaultState, action) {
     case 'SET_SEARCH_QUERY':
       return {
         ...state,
-        q: action.q
+        [`q${action.timeline}`]: action.q
       };
 
     case 'SET_LOCAL':

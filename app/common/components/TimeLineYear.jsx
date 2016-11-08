@@ -14,14 +14,15 @@ class TimeLineYear extends Component {
     return (
       <ul style={styles.timeLine}>
         <li style={styles.yearPos}><div style={styles.year}>19<span style={styles.accent}>{this.props.year.substr(2)}</span></div></li>
-        {this.props.totalsYear.map((total, i) =>
+        {this.months.map((m, i) =>
           <TimeLineSection
             key={i}
-            month={this.months[i]}
+            month={m}
             year={this.props.year}
-            totalsMonth={this.props.totalsYear[i]}
             people={this.props.people.filter((d) => d.death_month == i + 1)}
-            eventsMonth={this.props.eventsYear.filter((d) => new Date(d.Datum).getMonth() === i)} />)}
+            eventsMonth={this.props.eventsYear.filter((d) => new Date(d.Datum).getMonth() === i)}
+            qleft={this.props.qleft}
+            qright={this.props.qright}/>)}
       </ul>
     );
   }
