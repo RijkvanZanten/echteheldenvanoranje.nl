@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium from 'radium';
+import Radium, { keyframes } from 'radium';
 import { Link } from 'react-router';
 
 import Event from './Event.jsx';
@@ -41,7 +41,7 @@ class TimeLineSection extends Component {
         <div style={styles.event}></div>
         <div style={styles.dotsSection}>
           {peopleLeft.map((d, i) => {
-            const dotStyles = [styles.dotLeft, styles.dot];
+            const dotStyles = [{animation: `x .2s ${i * 100}ms forwards`}, styles.dotLeft, styles.dot];
             if(d.mainCategory === 'Militair') dotStyles.push(styles.greenDot);
             if(d.mainCategory === 'Verzet') dotStyles.push(styles.orangeDot);
             if(d.mainCategory === 'Sjoa') dotStyles.push(styles.blueDot);
@@ -51,7 +51,7 @@ class TimeLineSection extends Component {
         <div style={styles.labelContainer}><span>— {this.props.month} —</span></div>
         <div style={styles.dotsSection}>
           {peopleRight.map((d, i) => {
-            const dotStyles = [styles.dotRight, styles.dot];
+            const dotStyles = [{animation: `x .2s ${i * 100}ms forwards`}, styles.dotRight, styles.dot];
             if(d.mainCategory === 'Militair') dotStyles.push(styles.greenDot);
             if(d.mainCategory === 'Verzet') dotStyles.push(styles.orangeDot);
             if(d.mainCategory === 'Sjoa') dotStyles.push(styles.blueDot);
@@ -65,6 +65,15 @@ class TimeLineSection extends Component {
     );
   }
 }
+
+const animateIn = keyframes({
+  from: {
+    transform: 'scale(0)',
+  },
+  to: {
+    transform: 'scale(1)'
+  }
+});
 
 const styles = {
   container: {
@@ -89,11 +98,13 @@ const styles = {
   },
   dot: {
     display: 'inline-block',
+    transform: 'scale(0)',
     width: '10px',
     height: '10px',
     borderRadius: '50%',
     backgroundColor: 'rgba(255, 255, 255, .8)',
     margin: '5px',
+    animationName: animateIn
   },
   dotRight: {
     float: 'left',

@@ -26,7 +26,7 @@ const listen = function(app) {
     socket.on('action', (action) => {
       switch(action.type) {
         case 'GET_LOCAL':
-          connection.query(`SELECT * FROM persoon WHERE place_of_birth="${action.location}" OR place_of_death="${action.location}" AND death_year="1941";`, (err, res) => {
+          connection.query(`SELECT * FROM persoon WHERE death_year="1941" AND place_of_birth="${action.location}" OR place_of_death="${action.location}";`, (err, res) => {
             if(err) throw err;
 
             const formattedData = {};
