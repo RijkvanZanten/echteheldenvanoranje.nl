@@ -21,8 +21,6 @@ class Person extends Component {
     const id = this.props.params.id;
     const person = this.props.people[Object.keys(this.props.people).filter((d) => this.props.people[d].id == id)];
 
-    console.log(person);
-
     if(person.categories.indexOf('Militair') !== -1) {
       person.mainCategory = 'Militair';
     } else if(person.categories.indexOf('Verzet') !== -1) {
