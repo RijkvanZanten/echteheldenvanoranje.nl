@@ -3,6 +3,8 @@ import Radium from 'radium';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+const StyleLink = Radium(Link);
+
 const mapStateToProps = function(state) {
   return {
     people: state.people.people,
@@ -47,6 +49,7 @@ class Person extends Component {
           <div style={styles.info}>
             <h3>{event[0].Naam}</h3>
             <p>{event[0].Info.substr(0, 500)}...</p>
+            <StyleLink style={styles.link} to={'/event/' + event[0].id}>&gt; Lees meer</StyleLink>
             <img style={styles.img} src={'http://cms.verledenverteld.nl/' + event[0].Foto.url} />
           </div>
         );})()}
@@ -101,6 +104,14 @@ const styles = {
     opacity: '.5',
     zIndex: -1,
     maxWidth: '40%'
+  },
+  link: {
+    textTransform: 'uppercase',
+    fontFamily: 'Nexa',
+    display: 'block',
+    margin: '1em 0',
+    textDecoration: 'none',
+    color: 'white'
   }
 };
 
