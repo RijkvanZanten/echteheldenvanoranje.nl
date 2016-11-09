@@ -8,6 +8,7 @@ import YearButtons from '../components/YearButtons';
 
 import { getLocalIfNeeded } from '../actions/people';
 import { getEventsIfNeeded } from '../actions/events';
+import { getDefaultEventsIfNeeded } from '../actions/defaultEvents';
 
 const StyleDebounceInput = Radium(DebounceInput);
 
@@ -28,6 +29,7 @@ class Vizualisation extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
+    dispatch(getDefaultEventsIfNeeded());
     dispatch(getEventsIfNeeded());
     dispatch(getLocalIfNeeded(this.props.people.qleft, 'left'));
     dispatch(getLocalIfNeeded(this.props.people.qright, 'right'));

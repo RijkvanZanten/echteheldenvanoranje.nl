@@ -10,7 +10,8 @@ const StyleLink = Radium(Link);
 const mapStateToProps = function(state) {
   return {
     people: state.people.people,
-    events: state.events
+    events: state.events,
+    defaultEvents: state.defaultEvents
   };
 };
 
@@ -35,7 +36,7 @@ class Person extends Component {
       person.mainCategory = 'Burger';
     }
 
-    const event =
+    let event =
       this.props.events.items
         .filter((d) => d.Person_category.indexOf(person.mainCategory.toLowerCase()) !== -1) // by category
         .filter((d) => d.Location.indexOf(person.place_of_death.toLowerCase()) !== -1)
@@ -48,14 +49,25 @@ class Person extends Component {
         <h1 style={styles.title}>{person.name} <p style={[styles.category, styles[person.mainCategory]]}>{person.mainCategory}</p></h1>
         <p style={styles.sublabel}>{person.birth_day} {this.months[person.birth_month - 1]} {person.birth_year} — {person.death_day} {this.months[person.death_month - 1]} {person.death_year} ({person.death_year - person.birth_year} jaar oud)</p>
         <p style={styles.sublabel}>{person.place_of_birth} — {person.place_of_death}</p>
-        {(() => {if(event.length > 0) return (
-          <div style={styles.info}>
-            <h3>{event[0].Naam}</h3>
-            <p>{event[0].Info.substr(0, 500)}...</p>
-            <StyleLink style={styles.link} to={'/event/' + event[0].id}>&gt; Lees meer</StyleLink>
-            <img style={styles.img} src={'http://cms.verledenverteld.nl/' + event[0].Foto.url} />
-          </div>
-        );})()}
+        {(() => {
+          if(event.length > 0) return (
+            <div style={styles.info}>
+              <h3>{event[0].Naam}</h3>
+              <p>{event[0].Info.substr(0, 500)}...</p>
+              <StyleLink style={styles.link} to={'/event/' + event[0].id}>&gt; Lees meer</StyleLink>
+              <img style={styles.img} src={'http://cms.verledenverteld.nl/' + event[0].Foto.url} />
+            </div>
+          );
+          else {
+            event = this.props.defaultEvents.items.filter((d) => d.Categorie.toLowerCase() === person.mainCategory.toLowerCase());
+            return (
+            <div style={styles.info}>
+              <h3>{event[0].Naam}</h3>
+              <p>{event[0].Info}</p>
+              <img style={styles.img} src={'http://cms.verledenverteld.nl/' + event[0].Foto.url} />
+            </div>
+          );}
+        })()}
       </div>
     );
   }
