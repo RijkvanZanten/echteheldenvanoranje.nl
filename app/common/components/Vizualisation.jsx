@@ -39,6 +39,9 @@ class Vizualisation extends Component {
   render() {
     const { people } = this.props;
     const filteredPeople = [];
+
+    const y = 1941;
+
     Object.keys(people.people).forEach((id) => {
       if(
         people.people[id].place_of_birth.toLowerCase() === people.qleft.toLowerCase()
@@ -68,9 +71,9 @@ class Vizualisation extends Component {
             placeholder={this.props.people.qright} />
         </div>
         <TimeLineYear
-          year={'1941'}
-          eventsYear={this.props.events.items.filter((d) => new Date(d.Datum).getFullYear() === 1941)}
-          people={filteredPeople.filter((d) => d.death_year === '1941')}
+          year={`${y}`}
+          eventsYear={this.props.events.items.filter((d) => new Date(d.Datum).getFullYear() === y)}
+          people={filteredPeople.filter((d) => d.death_year === `${y}`)}
           qleft={this.props.people.qleft}
           qright={this.props.people.qright}/>
       </div>
