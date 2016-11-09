@@ -3,6 +3,7 @@ import Radium from 'radium';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import Map from '../components/Map';
 import BackButton from '../components/BackButton';
 
 const StyleLink = Radium(Link);
@@ -67,6 +68,12 @@ class Person extends Component {
               <img style={styles.img} src={'http://cms.verledenverteld.nl/' + event[0].Foto.url} />
             </div>
           );}
+        })()}
+
+        {(() => {
+          if(person.place_of_death_latlong.length === 2) {
+            return <Map />;
+          }
         })()}
       </div>
     );

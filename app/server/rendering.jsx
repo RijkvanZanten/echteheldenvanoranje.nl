@@ -39,6 +39,11 @@ const renderFullPage = function(dev, html, head, vendor, app, manifest) {
         ${head.title.toString()}
         ${head.meta.toString()}
         ${head.link.toString()}
+        <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+        <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+        <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+        <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+        <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
         <link rel="manifest" href="/manifest.json">
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">

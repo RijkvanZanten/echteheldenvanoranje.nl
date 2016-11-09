@@ -34,7 +34,9 @@ const listen = function(app) {
             res.forEach((d) => {
               formattedData[d.id] = {
                 ...d,
-                categories: d.categories.split(',')
+                categories: d.categories.split(','),
+                place_of_birth_latlong: d.place_of_birth_latlong ? d.place_of_birth_latlong.split(',') : [],
+                place_of_death_latlong: d.place_of_death_latlong ? d.place_of_death_latlong.split(',') : []
               };
             });
 
