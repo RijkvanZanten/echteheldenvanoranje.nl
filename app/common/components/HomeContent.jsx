@@ -15,8 +15,7 @@ class HomeContent extends Component {
           <li style={styles.listItem}><span style={styles.accent}>{storyCount}</span> verhalen</li>
         </ul>
         <div style={styles.divider}></div>
-        <p style={styles.paragraph}>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p style={styles.paragraph}>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure</p>
+        <p style={styles.paragraph}>Aan het einde van de Tweede Wereldoorlog heerst er een groot verdriet. Duizenden Nederlanders zijn omgekomen in vernietigingskampen of zijn gestorven als militair onder Hitlers regime. Om hun verhalen niet te vergeten is het belangrijk dat het verleden verteld wordt.</p>
       </div>
     );
   }
