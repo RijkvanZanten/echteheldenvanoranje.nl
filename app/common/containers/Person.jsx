@@ -72,7 +72,9 @@ const styles = {
   Sjoa: {
     color: '#6e9fe9'
   },
-  Burger: {}
+  Burger: {
+    opacity: '.5'
+  }
 };
 
 export default Person;
