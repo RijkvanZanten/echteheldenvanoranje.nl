@@ -7,6 +7,16 @@ const StyleLink = Radium(Link);
 
 @Radium
 class TimeLineSection extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activePerson: {}
+    };
+  }
+  showPerson(d) {
+    this.setState({activePerson: d});
+  }
+
   render() {
     const people = this.props.people.map((d) => {
       let mainCategory;
@@ -38,14 +48,16 @@ class TimeLineSection extends Component {
 
     return(
       <li style={styles.container}>
-        <div style={styles.event}></div>
+        <div style={styles.event}>
+          {this.props.eventsMonth.filter((d) => d.Location.indexOf(this.props.qleft) !== -1 || d.Location.indexOf('nederland') !== -1).map((d, i) => <Event position="left" key={i} data={d} />)}
+        </div>
         <div style={styles.dotsSection}>
           {peopleLeft.map((d, i) => {
             const dotStyles = [{animation: `x .2s ${i * 100}ms forwards`}, styles.dotLeft, styles.dot];
             if(d.mainCategory === 'Militair') dotStyles.push(styles.greenDot);
             if(d.mainCategory === 'Verzet') dotStyles.push(styles.orangeDot);
             if(d.mainCategory === 'Sjoa') dotStyles.push(styles.blueDot);
-            return <StyleLink key={i} to={'persoon/' + d.id}><span style={dotStyles}></span></StyleLink>;
+            return <StyleLink onMouseOver={() => {this.showPerson(d);}} key={i} to={'persoon/' + d.id}><span style={dotStyles}></span></StyleLink>;
           })}
         </div>
         <div style={styles.labelContainer}><span>— {this.props.month} —</span></div>
@@ -55,11 +67,11 @@ class TimeLineSection extends Component {
             if(d.mainCategory === 'Militair') dotStyles.push(styles.greenDot);
             if(d.mainCategory === 'Verzet') dotStyles.push(styles.orangeDot);
             if(d.mainCategory === 'Sjoa') dotStyles.push(styles.blueDot);
-            return <StyleLink key={i} to={'persoon/' + d.id}><span style={dotStyles}></span></StyleLink>;
+            return <StyleLink onMouseOver={() => {this.showPerson(d);}} key={i} to={'persoon/' + d.id}><span style={dotStyles}></span></StyleLink>;
           })}
         </div>
         <div style={styles.event}>
-          {this.props.eventsMonth.map((d, i) => <Event key={i} data={d} />)}
+          {this.props.eventsMonth.filter((d) => d.Location.indexOf(this.props.qright) !== -1 || d.Location.indexOf('nederland') !== -1).map((d, i) => <Event position="right" key={i} data={d} />)}
         </div>
       </li>
     );

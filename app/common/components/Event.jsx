@@ -4,10 +4,10 @@ import Radium from 'radium';
 @Radium
 class Event extends Component {
   render() {
-    const { data } = this.props;
+    const { data, position } = this.props;
     return(
-      <div style={styles.container}>
-        <img style={styles.img} src={'http://cms.verledenverteld.nl/' + data.Foto.url} />
+      <div style={[styles.container, styles['container' + position]]}>
+        <img style={[styles.img, styles['img' + position]]} src={'http://cms.verledenverteld.nl/' + data.Foto.url} />
         <h2 style={styles.title}>{data.Naam}</h2>
         <p style={styles.text}>{data.Info.substr(0, 150)}...</p>
       </div>
@@ -17,11 +17,9 @@ class Event extends Component {
 
 const styles = {
   container: {
-    textAlign: 'left',
-    padding: '0 3em 0 1em',
     marginBottom: '6.5em',
     position: 'relative',
-    opacity: '.4',
+    opacity: '.2',
     transition: 'opacity .3s',
     ':hover': {
       opacity: '1'
@@ -42,8 +40,21 @@ const styles = {
     opacity: '.3',
     width: '60%',
     top: '-1em',
-    right: '2em',
     zIndex: '-1'
+  },
+  imgleft: {
+    left: '2em',
+  },
+  imgright: {
+    right: '2em'
+  },
+  containerleft: {
+    textAlign: 'right',
+    padding: '0 1em 0 3em',
+  },
+  containerright: {
+    textAlign: 'left',
+    padding: '0 3em 0 1em',
   }
 };
 
