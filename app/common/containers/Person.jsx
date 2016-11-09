@@ -3,6 +3,8 @@ import Radium from 'radium';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import BackButton from '../components/BackButton';
+
 const StyleLink = Radium(Link);
 
 const mapStateToProps = function(state) {
@@ -42,6 +44,7 @@ class Person extends Component {
 
     return (
       <div style={styles.container}>
+        <BackButton />
         <h1 style={styles.title}>{person.name} <p style={[styles.category, styles[person.mainCategory]]}>{person.mainCategory}</p></h1>
         <p style={styles.sublabel}>{person.birth_day} {this.months[person.birth_month - 1]} {person.birth_year} — {person.death_day} {this.months[person.death_month - 1]} {person.death_year} ({person.death_year - person.birth_year} jaar oud)</p>
         <p style={styles.sublabel}>{person.place_of_birth} — {person.place_of_death}</p>

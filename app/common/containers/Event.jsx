@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { connect } from 'react-redux';
 
+import BackButton from '../components/BackButton';
+
 const mapStateToProps = function(state) {
   return {
     events: state.events
@@ -26,6 +28,7 @@ class Event extends Component {
 
     return (
       <div style={styles.container}>
+        <BackButton />
         <h1 style={styles.title}>{event.Naam}</h1>
         <h2 style={styles.date}>{event.Datum.getDate()} {this.months[event.Datum.getMonth()]} {event.Datum.getFullYear()}</h2>
         <p style={styles.info}>{event.Info}</p>
