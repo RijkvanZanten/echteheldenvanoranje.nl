@@ -1,5 +1,5 @@
 import Nexa from './fonts/Nexa.woff';
-import OpenSans from './fonts/OpenSans.woff';
+import OpenSansLight from './fonts/OpenSans-Light.woff';
 
 export default {
   '@font-face': {
@@ -9,9 +9,9 @@ export default {
     fontStyle: 'normal'
   },
   '@font-face ': {
-    fontFamily: 'Open Sans',
-    src: `url(${OpenSans})`,
-    fontWeight: 'normal',
+    fontFamily: 'Open Sans Light',
+    src: `url(${OpenSansLight})`,
+    fontWeight: '300',
     fontStyle: 'normal'
   },
   '*': {
@@ -21,7 +21,8 @@ export default {
     msTextSizeAdjust: '100%',
     webkitTextSizeAdjust: '100%',
     color: 'white',
-    fontFamily: 'Open Sans'
+    fontFamily: 'Open Sans Light',
+    fontWeight: '300'
   },
   'body' : {
     margin: 0,
