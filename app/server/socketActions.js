@@ -41,36 +41,39 @@ const listen = function(app) {
           });
           break;
 
-        case 'GET_TOTALS':
-          connection.query('SELECT death_year, death_month, COUNT(*) as count FROM persoon WHERE death_year="1941" GROUP BY death_year, death_month;', (err, res) => {
-            if(err) throw err;
-
-            const totals = {
-              '1940': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-              '1941': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-              '1942': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-              '1943': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-              '1944': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-              '1945': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            };
-
-            res.forEach((d) => {
-              totals[d.death_year][Number(d.death_month) - 1] = d.count;
-            });
-
-            socket.emit('action', setTotals(totals));
-          });
-          break;
+          // Rip overzicht van heel nederland
+        // case 'GET_TOTALS':
+        //   connection.query('SELECT death_year, death_month, COUNT(*) as count FROM persoon WHERE death_year="1941" GROUP BY death_year, death_month;', (err, res) => {
+        //     if(err) throw err;
+        //
+        //     const totals = {
+        //       '1940': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        //       '1941': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        //       '1942': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        //       '1943': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        //       '1944': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        //       '1945': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        //     };
+        //
+        //     res.forEach((d) => {
+        //       totals[d.death_year][Number(d.death_month) - 1] = d.count;
+        //     });
+        //
+        //     socket.emit('action', setTotals(totals));
+        //   });
+        //   break;
 
         case 'GET_EVENTS':
           client.getEntries('Gebeurtenis', (err, res) => {
             if(err) throw err;
             socket.emit('action', setEvents(res.rows.map((d) => {
-              const dateArray = (d.Datum).match(/^(\d+)-(\d+)-(\d+) (\d+)\:(\d+)\:(\d+)$/);
+              const dateArray = d.Datum.match(/^(\d+)-(\d+)-(\d+) (\d+)\:(\d+)\:(\d+)$/);
               return {
                 ...d,
                 Datum: new Date(dateArray[1], dateArray[2] - 1, dateArray[3], dateArray[4], dateArray[5], dateArray[6]),
-                Location: d.Location.split(',')
+                Location: d.Location.split(','),
+                Categories: d.Categories.split(','),
+                Person_category: d.Person_category.split(',')
               };
             })));
           });
