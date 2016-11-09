@@ -17,7 +17,8 @@ class Event extends Component {
     super(props);
     this.months = ['jan', 'feb', 'maa', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
   }
-  render() {
+
+  renderContent() {
     const id = this.props.params.id;
     const event = this.props.events.items.filter((d) => d.id == id).map((d) => {
       return {
@@ -35,6 +36,14 @@ class Event extends Component {
         <img style={styles.img} src={'http://cms.verledenverteld.nl/' + event.Foto.url} />
       </div>
     );
+  }
+
+  render() {
+    if(this.props.events.items.length === 0) {
+      return <div>loading</div>;
+    } else {
+      return this.renderContent();
+    }
   }
 }
 

@@ -23,7 +23,8 @@ class Person extends Component {
     super(props);
     this.months = ['jan', 'feb', 'maa', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
   }
-  render() {
+
+  renderContent() {
     const id = this.props.params.id;
     const person = this.props.people[Object.keys(this.props.people).filter((d) => this.props.people[d].id == id)];
 
@@ -77,6 +78,14 @@ class Person extends Component {
         })()}
       </div>
     );
+  }
+
+  render() {
+    if(Object.keys(this.props.people).length === 0) {
+      return <div>loading</div>;
+    } else {
+      return this.renderContent();
+    }
   }
 }
 
