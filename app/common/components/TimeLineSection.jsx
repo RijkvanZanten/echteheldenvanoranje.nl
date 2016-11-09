@@ -136,7 +136,8 @@ const styles = {
   event: {
     flexBasis: '10%',
     flexShrink: 0,
-    flexGrow: 1
+    flexGrow: 1,
+    overflow: 'hidden'
   }
 };
 

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 
-import i200 from './imgset/200.png';
-import i581 from './imgset/581.png';
-import i836 from './imgset/836.png';
-import i1044 from './imgset/1044.png';
-import i1239 from './imgset/1239.png';
-import i1400 from './imgset/1400.png';
+import i500 from './imgset/500.png';
+import i589 from './imgset/589.png';
+import i671 from './imgset/671.png';
+import i745 from './imgset/745.png';
+import i1280 from './imgset/1280.png';
 
 @Radium
 class BackgroundImage extends Component {
@@ -15,16 +14,15 @@ class BackgroundImage extends Component {
       <div style={styles.container}>
         <img
           style={styles.img}
-          sizes="(max-width: 1400px) 100vw, 1400px"
+          sizes="(max-width: 1280px) 100vw, 1280px"
           srcSet={`
-            ${i200} 200w,
-            ${i581} 581w,
-            ${i836} 836w,
-            ${i1044} 1044w,
-            ${i1239} 1239w,
-            ${i1400} 1400w,
+            ${i500} 200w,
+            ${i589} 581w,
+            ${i671} 836w,
+            ${i745} 1044w,
+            ${i1280} 1239w
           `}
-          src={i1400}
+          src={i1280}
           alt=""/>
       </div>
     );
