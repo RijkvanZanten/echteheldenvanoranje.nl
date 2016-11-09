@@ -14,6 +14,7 @@ class Event extends Component {
           <img style={[styles.img, styles['img' + position]]} src={'http://cms.verledenverteld.nl/' + data.Foto.url} />
           <h2 style={styles.title}>{data.Naam}</h2>
           <p style={styles.text}>{data.Info.substr(0, 150)}...</p>
+          <span style={styles.cta}>> Lees meer</span>
         </StyleLink>
       </div>
     );
@@ -24,7 +25,7 @@ const styles = {
   container: {
     marginBottom: '6.5em',
     position: 'relative',
-    opacity: '.2',
+    opacity: '.4',
     transition: 'opacity .3s',
     ':hover': {
       opacity: '1'
@@ -64,6 +65,12 @@ const styles = {
   link: {
     color: 'white',
     textDecoration: 'none'
+  },
+  cta: {
+    textTransform: 'uppercase',
+    fontFamily: 'Nexa',
+    display: 'block',
+    margin: '1em 0'
   }
 };
 
