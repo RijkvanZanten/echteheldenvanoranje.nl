@@ -48,8 +48,8 @@ const styles = {
     color: '#ebb765'
   },
   paragraph: {
-    width: '50%',
-    lineHeight: '150%',
+    width: '30%',
+    lineHeight: '180%',
     fontSize: '.9em'
   }
 };

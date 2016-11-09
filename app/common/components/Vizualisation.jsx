@@ -108,17 +108,18 @@ const styles = {
     position: 'relative',
     backgroundColor: 'transparent',
     textShadow: '1px 1px 15px #2a2e32',
+    borderBottom: '1px solid white',
     ':focus': {
       outline: 0
     }
   },
   inputLeft: {
-    right: '2.5em',
     textAlign: 'right',
+    right: '8.3%'
   },
   inputRight: {
-    left: '2.45em',
-    textAlign: 'left'
+    textAlign: 'left',
+    left: '8.3%'
   }
 };
 

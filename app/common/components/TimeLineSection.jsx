@@ -116,7 +116,10 @@ const styles = {
     borderRadius: '50%',
     backgroundColor: 'rgba(255, 255, 255, .8)',
     margin: '5px',
-    animationName: animateIn
+    animationName: animateIn,
+    ':hover': {
+      border: '1px solid white'
+    }
   },
   dotRight: {
     float: 'left',

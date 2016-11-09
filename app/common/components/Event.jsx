@@ -38,8 +38,9 @@ const styles = {
     marginBottom: 0
   },
   text: {
-    fontSize: '.8em',
-    margin: 0,
+    fontSize: '.9em',
+    margin: '10px 0 0 0',
+    lineHeight: '180%'
   },
   img: {
     position: 'absolute',
