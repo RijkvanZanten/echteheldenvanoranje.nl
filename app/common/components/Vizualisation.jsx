@@ -4,6 +4,8 @@ import Radium from 'radium';
 import { connect } from 'react-redux';
 import DebounceInput from 'react-debounce-input';
 
+import YearButtons from '../components/YearButtons';
+
 import { getLocalIfNeeded } from '../actions/people';
 import { getEventsIfNeeded } from '../actions/events';
 
@@ -40,7 +42,7 @@ class Vizualisation extends Component {
     const { people } = this.props;
     const filteredPeople = [];
 
-    const y = 1941;
+    let y = this.props.year;
 
     Object.keys(people.people).forEach((id) => {
       if(
@@ -76,6 +78,7 @@ class Vizualisation extends Component {
           people={filteredPeople.filter((d) => d.death_year === `${y}`)}
           qleft={this.props.people.qleft}
           qright={this.props.people.qright}/>
+        <YearButtons year={y} />
       </div>
     );
   }

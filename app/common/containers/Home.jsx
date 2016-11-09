@@ -10,7 +10,7 @@ class Home extends Component {
       <div>
         <BackgroundImage/>
         <HomeContent/>
-        <Vizualisation/>
+        <Vizualisation year={this.props.params.year ? +this.props.params.year : 1940}/>
       </div>
     );
   }
