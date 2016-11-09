@@ -10,7 +10,6 @@ class YearButtons extends Component {
     const yearBack = `${+this.props.year - 1}`;
     const yearFront = `${+this.props.year + 1}`;
 
-
     return (
       <div style={styles.container}>
         {(() => {

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
+import { Link } from 'react-router';
+
+const StyleLink = Radium(Link);
 
 @Radium
 class Event extends Component {
@@ -7,9 +10,11 @@ class Event extends Component {
     const { data, position } = this.props;
     return(
       <div style={[styles.container, styles['container' + position]]}>
-        <img style={[styles.img, styles['img' + position]]} src={'http://cms.verledenverteld.nl/' + data.Foto.url} />
-        <h2 style={styles.title}>{data.Naam}</h2>
-        <p style={styles.text}>{data.Info.substr(0, 150)}...</p>
+        <StyleLink style={styles.link} to={`/event/${data.id}`}>
+          <img style={[styles.img, styles['img' + position]]} src={'http://cms.verledenverteld.nl/' + data.Foto.url} />
+          <h2 style={styles.title}>{data.Naam}</h2>
+          <p style={styles.text}>{data.Info.substr(0, 150)}...</p>
+        </StyleLink>
       </div>
     );
   }
@@ -55,6 +60,10 @@ const styles = {
   containerright: {
     textAlign: 'left',
     padding: '0 3em 0 1em',
+  },
+  link: {
+    color: 'white',
+    textDecoration: 'none'
   }
 };
 
