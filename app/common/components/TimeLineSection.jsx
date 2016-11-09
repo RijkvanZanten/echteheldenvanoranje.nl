@@ -57,7 +57,7 @@ class TimeLineSection extends Component {
             if(d.mainCategory === 'Militair') dotStyles.push(styles.greenDot);
             if(d.mainCategory === 'Verzet') dotStyles.push(styles.orangeDot);
             if(d.mainCategory === 'Sjoa') dotStyles.push(styles.blueDot);
-            return <StyleLink onMouseOver={() => {this.showPerson(d);}} key={i} to={'persoon/' + d.id}><span style={dotStyles}></span></StyleLink>;
+            return <StyleLink onMouseOver={() => {this.showPerson(d);}} key={i} to={'/persoon/' + d.id}><span style={dotStyles}></span></StyleLink>;
           })}
         </div>
         <div style={styles.labelContainer}><span>— {this.props.month} —</span></div>
@@ -67,7 +67,7 @@ class TimeLineSection extends Component {
             if(d.mainCategory === 'Militair') dotStyles.push(styles.greenDot);
             if(d.mainCategory === 'Verzet') dotStyles.push(styles.orangeDot);
             if(d.mainCategory === 'Sjoa') dotStyles.push(styles.blueDot);
-            return <StyleLink onMouseOver={() => {this.showPerson(d);}} key={i} to={'persoon/' + d.id}><span style={dotStyles}></span></StyleLink>;
+            return <StyleLink onMouseOver={() => {this.showPerson(d);}} key={i} to={'/persoon/' + d.id}><span style={dotStyles}></span></StyleLink>;
           })}
         </div>
         <div style={styles.event}>
