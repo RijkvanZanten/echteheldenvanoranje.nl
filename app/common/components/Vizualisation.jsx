@@ -104,10 +104,12 @@ const styles = {
     appearance: 'none',
     textTransform: 'uppercase',
     width: '50%',
-    border: 'none',
     position: 'relative',
     backgroundColor: 'transparent',
     textShadow: '1px 1px 15px #2a2e32',
+    borderLeft: 'none',
+    borderRight: 'none',
+    borderTop: 'none',
     borderBottom: '1px solid white',
     ':focus': {
       outline: 0
