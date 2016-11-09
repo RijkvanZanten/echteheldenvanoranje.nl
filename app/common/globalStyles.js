@@ -22,7 +22,8 @@ export default {
     webkitTextSizeAdjust: '100%',
     color: 'white',
     fontFamily: 'Open Sans Light',
-    fontWeight: '300'
+    fontWeight: '300',
+    WebkitFontSmoothing: 'antialiased'
   },
   'body' : {
     margin: 0,
