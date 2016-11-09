@@ -4,8 +4,8 @@ import Radium from 'radium';
 @Radium
 class HomeContent extends Component {
   render() {
-    const lifeCount = 189131;
-    const storyCount = 42014;
+    const lifeCount = '167.067';
+    const storyCount = '42.014';
 
     return (
       <div style={styles.container}>

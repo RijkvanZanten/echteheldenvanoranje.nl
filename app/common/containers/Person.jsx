@@ -110,7 +110,8 @@ const styles = {
   },
   info: {
     width: '50%',
-    whiteSpace: 'pre-wrap'
+    whiteSpace: 'pre-wrap',
+    marginTop: '5em'
   },
   img: {
     position: 'absolute',
