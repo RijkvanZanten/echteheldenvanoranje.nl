@@ -21,6 +21,8 @@ class Person extends Component {
     const id = this.props.params.id;
     const person = this.props.people[Object.keys(this.props.people).filter((d) => this.props.people[d].id == id)];
 
+    console.log(person);
+
     if(person.categories.indexOf('Militair') !== -1) {
       person.mainCategory = 'Militair';
     } else if(person.categories.indexOf('Verzet') !== -1) {
@@ -35,9 +37,8 @@ class Person extends Component {
       this.props.events.items
         .filter((d) => d.Person_category.indexOf(person.mainCategory.toLowerCase()) !== -1) // by category
         .filter((d) => d.Location.indexOf(person.place_of_death.toLowerCase()) !== -1)
-        .filter((d) => new Date(d.Datum).getFullYear() === +person.death_year); // by year
-
-    console.log(event);
+        .filter((d) => new Date(d.Datum).getFullYear() === +person.death_year) // by year
+        .filter((d) => new Date(d.Datum).getMonth() + 1 === +person.death_month);// by month
 
     return (
       <div style={styles.container}>
