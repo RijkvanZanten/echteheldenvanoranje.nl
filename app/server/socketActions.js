@@ -69,7 +69,8 @@ const listen = function(app) {
               const dateArray = (d.Datum).match(/^(\d+)-(\d+)-(\d+) (\d+)\:(\d+)\:(\d+)$/);
               return {
                 ...d,
-                Datum: new Date(dateArray[1], dateArray[2] - 1, dateArray[3], dateArray[4], dateArray[5], dateArray[6])
+                Datum: new Date(dateArray[1], dateArray[2] - 1, dateArray[3], dateArray[4], dateArray[5], dateArray[6]),
+                Location: d.Location.split(',')
               };
             })));
           });
