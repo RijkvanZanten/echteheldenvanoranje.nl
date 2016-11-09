@@ -9,8 +9,9 @@ import Event from './containers/Event';
 const routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Home}/>
-    <Route path="persoon/:id" component={Person}/>
-    <Route path="event/:id" component={Event}/>
+    <Route path="/persoon/:id" component={Person}/>
+    <Route path="/event/:id" component={Event}/>
+    <Route path="/year/:year" component={Home} />
   </Route>
 );
 
