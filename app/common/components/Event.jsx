@@ -27,6 +27,7 @@ const styles = {
     position: 'relative',
     opacity: '.4',
     transition: 'opacity .3s',
+    overflow: 'hidden',
     ':hover': {
       opacity: '1'
     }
