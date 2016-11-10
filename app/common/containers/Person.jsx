@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium from 'radium';
+import Radium, { keyframes } from 'radium';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
@@ -89,6 +89,15 @@ class Person extends Component {
   }
 }
 
+const fadeIn = keyframes({
+  from: {
+    opacity: 0,
+  },
+  to: {
+    opacity: 1
+  }
+});
+
 const styles = {
   loader: {
     display: 'block',
@@ -100,7 +109,10 @@ const styles = {
   },
   container: {
     padding: '5em',
-    position: 'relative'
+    position: 'relative',
+    opacity: 0,
+    animation: 'x 1.5s ease forwards',
+    animationName: fadeIn
   },
   title: {
     textTransform: 'uppercase',
