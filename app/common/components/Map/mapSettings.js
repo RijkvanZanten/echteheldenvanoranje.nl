@@ -7,7 +7,7 @@ const settings = {
   theme: 'light',
   dataProvider: {
     map: 'worldHigh',
-    zoomLevel: 15,
+    zoomLevel: 40,
     zoomLongitude: 5.291266,
     zoomLatitude: 52.132633,
   },
