@@ -72,8 +72,8 @@ class Person extends Component {
         })()}
 
         {(() => {
-          if(person.place_of_death_latlong.length === 2) {
-            return <Map />;
+          if(person.place_of_death_latlong.length === 2 && person.place_of_birth_latlong.length === 2) {
+            return <Map person={person} />;
           }
         })()}
       </div>
