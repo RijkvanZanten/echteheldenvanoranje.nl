@@ -16,12 +16,43 @@ class HomeContent extends Component {
         </ul>
         <div style={styles.divider}></div>
         <p style={styles.paragraph}>Aan het einde van de Tweede Wereldoorlog heerst er een groot verdriet. Duizenden Nederlanders zijn omgekomen in vernietigingskampen of zijn gestorven als militair onder Hitlers regime. Om hun verhalen niet te vergeten is het belangrijk dat het verleden verteld wordt.</p>
+        <ul style={styles.legend}>
+          <li><span style={styles.dot}></span> Burger</li>
+          <li><span style={[styles.dot, styles.verzet]}></span> Verzet</li>
+          <li><span style={[styles.dot, styles.militair]}></span> Militair</li>
+          <li><span style={[styles.dot, styles.sjoa]}></span> Sjoa</li>
+        </ul>
       </div>
     );
   }
 }
 
 const styles = {
+  legend: {
+    listStyle: 'none',
+    padding: 0,
+    width: '30%',
+    lineHeight: '180%',
+    fontSize: '.9em'
+  },
+  dot: {
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    width: '10px',
+    height: '10px',
+    borderRadius: '50%',
+    backgroundColor: 'rgba(255, 255, 255, .8)',
+    margin: '5px',
+  },
+  verzet: {
+    backgroundColor: '#daab62'
+  },
+  sjoa: {
+    backgroundColor: '#6e9fe9'
+  },
+  militair: {
+    backgroundColor: '#8fda62'
+  },
   container: {
     padding: '5em'
   },
