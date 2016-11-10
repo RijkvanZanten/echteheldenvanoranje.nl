@@ -1,10 +1,35 @@
+import Nexa from './fonts/Nexa.woff';
+import OpenSansLight from './fonts/OpenSans-Light.woff';
+
 export default {
+  '@font-face': {
+    fontFamily: 'Nexa',
+    src: `url(${Nexa})`,
+    fontWeight: 'normal',
+    fontStyle: 'normal'
+  },
+  '@font-face ': {
+    fontFamily: 'Open Sans Light',
+    src: `url(${OpenSansLight})`,
+    fontWeight: '300',
+    fontStyle: 'normal'
+  },
+  '*': {
+    boxSizing: 'border-box'
+  },
   'html' : {
     msTextSizeAdjust: '100%',
     webkitTextSizeAdjust: '100%',
+    color: 'white',
+    fontFamily: 'Open Sans Light',
+    fontWeight: '300',
+    WebkitFontSmoothing: 'antialiased'
   },
   'body' : {
-    margin: 0
+    margin: 0,
+    backgroundColor: '#2a2e32',
+    minHeight: '100vh',
+    minWidth: '652px'
   },
   'article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary': {
     display: 'block'

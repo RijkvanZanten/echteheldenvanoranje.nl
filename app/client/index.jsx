@@ -4,10 +4,10 @@ import { Router, browserHistory } from 'react-router';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { persistStore, autoRehydrate } from 'redux-persist';
-import reducer from '../common/reducers';
 import localForage from 'localforage';
 import createActionBuffer from 'redux-action-buffer';
 import { REHYDRATE } from 'redux-persist/constants';
+import reducer from '../common/reducers';
 import thunk from 'redux-thunk';
 
 import createSocketMiddleware from './socketMiddleware';
@@ -23,12 +23,11 @@ import StyleProvider from '../common/StyleProvider';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line
 
 let cachingAvailable = true;
-
 try {
   window.localStorage;
 } catch(e) {
   cachingAvailable = false;
-  console.warn('Caching disabled.', e); // eslint-disable-line
+  console.warn('Caching disabled. ', e); // eslint-disable-line
 }
 
 const middleware = [thunk, socketMiddleware];
@@ -52,7 +51,7 @@ if(process.env.NODE_ENV === 'production') {
 
 const store = createStore(reducer, enhancers);
 
-function renderDOM() {
+function renderDom() {
   render(
     <StyleProvider userAgent={navigator.userAgent}>
       <Provider store={store}>
@@ -63,7 +62,7 @@ function renderDOM() {
 }
 
 if(cachingAvailable) {
-  persistStore(store, { storage: localForage }, renderDOM);
+  persistStore(store, { storage: localForage }, renderDom);
 } else {
-  renderDOM();
+  renderDom();
 }

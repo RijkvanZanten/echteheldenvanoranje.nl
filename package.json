@@ -24,13 +24,16 @@
   },
   "homepage": "https://github.com/RijkvanZanten/verleden-verteld#readme",
   "dependencies": {
+    "ammap3": "amcharts/ammap3",
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
     "express": "^4.14.0",
     "localforage": "^1.4.3",
-    "node-directus-client": "^0.3.0",
+    "mysql": "^2.12.0",
+    "node-directus-client": "^0.3.1",
     "radium": "^0.18.1",
     "react": "^15.3.2",
+    "react-debounce-input": "^2.4.0",
     "react-dom": "^15.3.2",
     "react-helmet": "^3.2.1",
     "react-redux": "^4.4.5",
@@ -40,8 +43,10 @@
     "redux-devtools-extension": "^1.0.0",
     "redux-persist": "^4.0.0-alpha7",
     "redux-thunk": "^2.1.0",
+    "request": "^2.78.0",
     "socket.io": "^1.5.1",
-    "socket.io-client": "^1.5.1"
+    "socket.io-client": "^1.5.1",
+    "sync-request": "^3.0.1"
   },
   "devDependencies": {
     "assets-webpack-plugin": "^3.5.0",

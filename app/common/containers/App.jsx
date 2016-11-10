@@ -20,7 +20,7 @@ class App extends Component {
             { property: 'og:title', content: 'Verleden Verteld' },
             { property: 'og:type', content: 'article' },
           ]} />
-        <h1>Rijk</h1>
+        {this.props.children}
       </div>
     );
   }
