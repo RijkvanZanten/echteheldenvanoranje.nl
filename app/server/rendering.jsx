@@ -40,7 +40,7 @@ const renderFullPage = function(dev, html, head, vendor, app, manifest) {
         ${head.meta.toString()}
         ${head.link.toString()}
         <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
-        <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+        <script src="https://www.amcharts.com/lib/3/maps/js/worldHigh.js"></script>
         <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
         <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
         <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
