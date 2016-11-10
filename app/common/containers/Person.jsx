@@ -82,7 +82,7 @@ class Person extends Component {
 
   render() {
     if(Object.keys(this.props.people).length === 0) {
-      return <div>loading</div>;
+      return <h1 style={styles.loader}>Verleden<br/>Verteld</h1>;
     } else {
       return this.renderContent();
     }
@@ -90,6 +90,14 @@ class Person extends Component {
 }
 
 const styles = {
+  loader: {
+    display: 'block',
+    textTransform: 'uppercase',
+    fontFamily: 'Nexa',
+    fontSize: '3em',
+    opacity: '.1',
+    margin: '5rem'
+  },
   container: {
     padding: '5em',
     position: 'relative'

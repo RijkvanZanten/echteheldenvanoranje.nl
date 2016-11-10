@@ -40,7 +40,7 @@ class Event extends Component {
 
   render() {
     if(this.props.events.items.length === 0) {
-      return <div>loading</div>;
+      return <h1 style={styles.loader}>Verleden<br/>Verteld</h1>;
     } else {
       return this.renderContent();
     }
@@ -48,6 +48,14 @@ class Event extends Component {
 }
 
 const styles = {
+  loader: {
+    display: 'block',
+    textTransform: 'uppercase',
+    fontFamily: 'Nexa',
+    fontSize: '3em',
+    opacity: '.1',
+    margin: '5rem'
+  },
   container: {
     padding: '5em',
     position: 'relative'
